@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+	--box-shadow-header: 0px 12px 21px -19px rgba(0,0,0,0.59);
+	--box-shadow-container: 3px 3px 10px -3px rgba(0,0,0,0.4);
+	--color-primary: #2E86C1;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	background-color: #F8F9F9;
+}
+
+.header {
+	width: 100%;
+	height: 50px;
+	background-color: var(--color-primary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	box-shadow: var(--box-shadow-header);
+}
+
+.titulo {
+	color: #fff;
+}
+
+.beta {
+	width: 30px;
+	border-radius: 1px;
+	background-color: red;
+	font-size: 10px;
+	text-align: center;
+	color: #FFF;
+	margin-top: -20px;
+}
+
+.calculator {
+	height: calc(100vh - 50px);
+	padding: 0;
+	display: flex;	
+}
+
+.calculator-container {
+	width: 35%;
+}
+
+.container__form {
+	display: flex;
+	flex-direction: column;
+	background-color: #FFF;
+	margin: 40px 30px 0 30px;
+	padding: 10px;
+	border-radius: 6px;
+	box-shadow: var(--box-shadow-container);
+}
+
+.container__input {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 10px;
+	margin: 0 auto;
+}
+
+.input {
+	width: 95%;
+	height: 40px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border: 2px solid var(--color-primary);
+	border-radius: 6px;
+	outline: none;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.container__button {
+	display: flex;
+	justify-content: center;
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 5px;
+	caret-color: transparent;
+}
+
+.button {
+	font-weight: 800;
+	font-size: medium;
+	margin: 0 5px 0 5px ;
+	height: 35px;
+	width: 80px;
+	background-color: var(--color-primary);
+	border: none;
+	color: #fff;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: #1c5074;
+}
+
+.container__result {
+	display: flex;
+	justify-content: space-between;
+	height: 50px;
+	align-items: center;
+	padding: 0 20px;
+}
+
+.result {
+	color: grey;
+	caret-color: transparent;
+}
+
+.number {
+	color: #2E86C1;
+	font-weight: 600;
+}
+
+.warning__container {
+	height: 40px;
+	background-color: #FD3C32;
+	border-radius: 6px;
+	/* margin: auto; */
+	margin: 20px 30px 0 30px;
+	box-shadow: var(--box-shadow-container);
+	display:none;
+
+}
+
+.warning {
+	padding: 10px;
+	font-weight: 600;
+	text-align: center;
+	color: #fff;
+}
+
+.linea {
+	opacity: .2;
+}
+
+.list-container {
+	/* background-color: red; */
+	width: 65%;
+}
+
+.container__list {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	width: 90%;
+	height: 80%;
+	margin: 0 auto;
+	margin-top: 40px;
+	border-radius: 6px;
+	box-shadow: var(--box-shadow-container);
+	overflow: hidden;
+}
+
+.op {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--color-primary);
+	border-radius: 6px;
+	width: 80%;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 20px;
+	box-shadow: var(--box-shadow-container);
+	caret-color: transparent;
+
+}
+
+.op_title {
+	color: #FFF;
+	margin: 0 20px;
+}
+
+.operation {
+	color: #FFF;
+	margin: 0 20px;
+	font-weight: 600;
+}
+
+.header__list {
+	/* background-color: #cccccc; */
+	background-color: var(--color-primary);
+	text-align: center;
+	/* box-shadow: var(--box-shadow-header); */
+}
+
+.header__title {
+	/* color: #333333; */
+	color: #FFF;
+	font-weight: 600;
+	caret-color: transparent;
+}
+
+.list {
+	width: 100%;
+	height: 100%;
+	caret-color: transparent;
+}
+
+/* 890 */
+
+@media screen and (max-width: 890px){
+	.warning {
+		font-size: small;
+	}
+}
+
+@media screen and (max-width: 660px) {
+	.calculator {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.calculator-container {
+		width: 100%;
+	}
+
+	.container__form {
+		margin: 0 auto;
+		margin-top: 40px;
+		margin-bottom: 20px;
+		width: 50%;
+	}
+
+	.warning__container {
+		width: 50%;
+		margin: 0 auto;
+		margin-bottom: 20px;
+	}
+	
+	.list-container {
+		/* background-color: red; */
+		width: 100%;
+	}
+
+	.container__list {
+		height: 400px;
+		margin: 0 auto;
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.container__form {
+		width: 90%;
+	}
+
+	.warning__container {
+		width: 90%;
+	}
+
+	.warning {
+		font-size: medium;
+	}
+
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculadora</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<header class="header">
+		<h1 class="titulo">CALCULADORA </h1>
+		<h3 class="beta">BETA</h3>
+	</header>
+	<section class="calculator">
+		<article class="calculator-container">
+			<div class="container__form">
+				<form id="forma" class="form" onsubmit="return false">
+					<div class="container__input">
+						<input type="number" placeholder="Número" id="num1" step="any" class="input">
+						<input type="number" placeholder="Número" id="num2" step="any" class="input">
+					</div>
+					<div class="container__button"> 
+						<button class="button" id="suma">+</button>
+						<button class="button" id="resta">-</button>
+						<button class="button" id="mult">x</button>
+						<button class="button" id="div">/</button>
+					</div>
+				</form>
+				<div class="container__result">
+					<p id="result" class="result">Resultado:</p>
+					<p id="number" class="number"></p>
+				</div>
+				
+			</div>
+			<div id="warning__container" class="warning__container">
+				<p id="warning" class="warning"></p>
+			</div>
+		</article>
+
+		<hr class="linea">
+
+		<article class="list-container">
+			<div class="container__list">
+				<header class="header__list">
+					<h2 class="header__title">Registro</h2>
+				</header>
+				<div class="list" id="list">
+					
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<script src="js/Operation.js"></script>
+	<script src="js/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+</body>
+</html>
+
