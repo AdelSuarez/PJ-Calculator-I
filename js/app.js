@@ -9,12 +9,23 @@ document.addEventListener('DOMContentLoaded', function (){
 	const btnResta = document.getElementById('resta');
 	const btnMult = document.getElementById('mult');
 	const btnDiv = document.getElementById('div');
+	const empty = document.getElementById('empty');
 
 	const listOperation = [] 
 
+	const emptyf = () => {
+		if (listOperation.length == 0){
+			empty.style.display = 'flex';
+		} else {
+			empty.style.display = 'none';
+		}
+	}
+
+	emptyf();
+	
 	const load = () => {
 		let operationHTML = '';
-		for (let operation of listOperation) {
+		for (let operation of listOperation.reverse()) {
 			operationHTML += createOperation(operation);
 		}
 		document.getElementById('list').innerHTML = operationHTML;
@@ -53,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function (){
 	function time(w, cw) {
 		w.innerHTML = 'Por favor introduce los números';
 		cw.style.display = 'block';
-		setTimeout(function(){
+		setTimeout(function() {
 			cw.style.display = 'none';
 		}, 2000);
 		result.innerHTML = '';
@@ -63,6 +74,9 @@ document.addEventListener('DOMContentLoaded', function (){
 		warning.innerHTML = '';
 		num1.value = '';
 		num2.value = '';
+		setTimeout(function() {
+			number.innerHTML = '';
+		}, 2000);
 	}
 
 	function loadApp(n1, n2, r, o) {
@@ -85,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function (){
 			
 			// Pruebas
 			
-			loadApp(num1.value, num2.value, resultado, suma);
+			loadApp(num1.value, num2.value, resultado, suma);	
 			clear();	
 
 		}
