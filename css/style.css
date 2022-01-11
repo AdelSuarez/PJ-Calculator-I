@@ -179,6 +179,7 @@ body {
 	margin-top: 40px;
 	border-radius: 6px;
 	box-shadow: var(--box-shadow-container);
+	overflow: hidden;
 }
 
 .container__empty {
