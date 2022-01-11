@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', function (){
 	const empty = document.getElementById('empty');
 
 	const listOperation = [] 
+	
+	const deleteOp = () => {
+		if (listOperation.length == 10){
+			listOperation.shift();
+		}
+	}
 
 	const emptyf = () => {
 		if (listOperation.length == 0){
@@ -22,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function (){
 	}
 
 	emptyf();
+	deleteOp();
 	
 	const load = () => {
 		let operationHTML = '';
@@ -100,7 +107,8 @@ document.addEventListener('DOMContentLoaded', function (){
 			// Pruebas
 			
 			loadApp(num1.value, num2.value, resultado, suma);	
-			clear();	
+			clear();
+			deleteOp();
 
 		}
 	}
@@ -119,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
 			loadApp(num1.value, num2.value, resultado, resta);
 			clear();
+			deleteOp();
 		}
 
 	}
@@ -137,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
 			loadApp(num1.value, num2.value, resultado, mult);
 			clear();
+			deleteOp();
 		}
 	}
 
@@ -155,6 +165,8 @@ document.addEventListener('DOMContentLoaded', function (){
 
 				loadApp(num1.value, num2.value, resultado, div);
 				clear();
+				deleteOp();
+
 			} else {
 				warning.innerHTML = 'No se puede dividir por 0';
 				container_warning.style.display = 'block';
