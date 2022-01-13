@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function (){
 	let forma = document.forms['forma'];
-	let num1 = forma['num1'];
-	let num2 = forma['num2'];
+	let numUno = forma['num1'];
+	let numDos = forma['num2'];
 	let result = document.getElementById('number');
 	const warning = document.getElementById('warning');
-	const container_warning = document.getElementById('warning__container')
+	const containerWarning = document.getElementById('warning__container')
 	const btnSuma = document.getElementById('suma');
 	const btnResta = document.getElementById('resta');
 	const btnMult = document.getElementById('mult');
@@ -12,14 +12,8 @@ document.addEventListener('DOMContentLoaded', function (){
 	const empty = document.getElementById('empty');
 
 	const listOperation = [] 
-	
-	const deleteOp = () => {
-		if (listOperation.length == 10){
-			listOperation.shift();
-		}
-	}
 
-	const emptyf = () => {
+	const verificationList = () => {
 		if (listOperation.length == 0){
 			empty.style.display = 'flex';
 		} else {
@@ -27,10 +21,9 @@ document.addEventListener('DOMContentLoaded', function (){
 		}
 	}
 
-	emptyf();
-	deleteOp();
+	verificationList();
 	
-	const load = () => {
+	const loadList = () => {
 		let operationHTML = '';
 		for (let operation of listOperation.reverse()) {
 			operationHTML += createOperation(operation);
@@ -39,19 +32,19 @@ document.addEventListener('DOMContentLoaded', function (){
 	}
 
 	const createOperation = (operation) => {
-		let a = operation.operation;
+		let operationType = operation.operation;
 		let signo = '';
 		let color = '';
-		if ( a == 'SUMA') {
+		if ( operationType == 'SUMA') {
 			signo = '+';
 			color = '#1E88E5';
-		} else if (a == 'RESTA') {
+		} else if (operationType == 'RESTA') {
 			signo = '-';
 			color = '#EF5350';
-		} else if (a == 'MULTIPLICACION') {
+		} else if (operationType == 'MULTIPLICACION') {
 			signo = 'x';
 			color = '#673AB7';
-		} else if (a == 'DIVISION') {
+		} else if (operationType == 'DIVISION') {
 			signo = '/';
 			color = '#FF5722';
 		}
@@ -59,57 +52,53 @@ document.addEventListener('DOMContentLoaded', function (){
 		let operationHTML = `
 					<div class="op" id="op" style="background-color: ${color};">
 						<h3 class="op_title">${operation.operation}</h3>
-						<p class="operation">${operation.num1} ${signo} ${operation.num2} = ${operation.result}</p>
+						<p class="operation">${operation.numUno} ${signo} ${operation.numDos} = ${operation.result}</p>
 					</div>`;
 		return operationHTML;
 	}
 
-	function verificacion(v1, v2) {
-		return ((v1.value).length == 0 || (v2.value).length == 0);
+	function verificacion(numUno, numDos) {
+		return ((numUno.value).length == 0 || (numDos.value).length == 0);
 	}
 
-	function time(w, cw) {
-		w.innerHTML = 'Por favor introduce los números';
-		cw.style.display = 'block';
+	function time(warning, containerWarning) {
+		warning.innerHTML = 'Por favor introduce los números';
+		containerWarning.style.display = 'block';
 		setTimeout(function() {
-			cw.style.display = 'none';
+			containerWarning.style.display = 'none';
 		}, 2000);
 		result.innerHTML = '';
 	}
 
 	function clear() {
 		warning.innerHTML = '';
-		num1.value = '';
-		num2.value = '';
+		numUno.value = '';
+		numDos.value = '';
 		setTimeout(function() {
 			number.innerHTML = '';
 		}, 2000);
 	}
 
-	function loadApp(n1, n2, r, o) {
-		listOperation.push(new Operation(n1, n2, r, o));
+	function loadApp(numUno, numDos, result, operation) {
+		listOperation.push(new Operation(numUno, numDos, result, operation));
 		console.log(listOperation);
-		load();
+		loadList();
 	}
 
 	btnSuma.onclick = () => {
 		const suma = 'SUMA';
 
-		if (verificacion(num1, num2)) {
-			time(warning, container_warning);
+		if (verificacion(numUno, numDos)) {
+			time(warning, containerWarning);
 
 		} else{
 
-			let resultado = Number(num1.value) + Number(num2.value);
-			console.log(resultado);
-			result.innerHTML = resultado;
+			let resultOperation = Number(numUno.value) + Number(numDos.value);
+			console.log(resultOperation);
+			result.innerHTML = resultOperation;
 			
-			// Pruebas
-			
-			loadApp(num1.value, num2.value, resultado, suma);	
+			loadApp(numUno.value, numDos.value, resultOperation, suma);	
 			clear();
-			deleteOp();
-
 		}
 	}
 
@@ -117,17 +106,16 @@ document.addEventListener('DOMContentLoaded', function (){
 	btnResta.onclick = () => {
 		const resta = 'RESTA';
 
-		if (verificacion(num1, num2)) {
-			time(warning, container_warning);
+		if (verificacion(numUno, numDos)) {
+			time(warning, containerWarning);
 		} else {
 			
-			let resultado = Number(num1.value) - Number(num2.value);
-			console.log(resultado);
-			result.innerHTML = resultado;
+			let resultOperation = Number(numUno.value) - Number(numDos.value);
+			console.log(resultOperation);
+			result.innerHTML = resultOperation;
 
-			loadApp(num1.value, num2.value, resultado, resta);
+			loadApp(numUno.value, numDos.value, resultOperation, resta);
 			clear();
-			deleteOp();
 		}
 
 	}
@@ -135,46 +123,44 @@ document.addEventListener('DOMContentLoaded', function (){
 	btnMult.onclick = () => {
 		const mult = 'MULTIPLICACION'
 
-		if (verificacion(num1, num2)) {
-			time(warning, container_warning);
+		if (verificacion(numUno, numDos)) {
+			time(warning, containerWarning);
 
 		} else {
 
-			let resultado = Number(num1.value) * Number(num2.value);
-			console.log(resultado);
-			result.innerHTML = resultado;
+			let resultOperation = Number(numUno.value) * Number(numDos.value);
+			console.log(resultOperation);
+			result.innerHTML = resultOperation;
 
-			loadApp(num1.value, num2.value, resultado, mult);
+			loadApp(numUno.value, numDos.value, resultOperation, mult);
 			clear();
-			deleteOp();
 		}
 	}
 
 	btnDiv.onclick = () => {
 		const div = 'DIVISION'
 
-		if (verificacion(num1, num2)) {
-			time(warning, container_warning);
+		if (verificacion(numUno, numDos)) {
+			time(warning, containerWarning);
 
 		} else {
 			
-			let resultado = Number(num1.value) / Number(num2.value);
-			if (resultado != 'Infinity') {
-				console.log(resultado);
-				result.innerHTML = resultado;
+			let resultOperation = Number(numUno.value) / Number(numDos.value);
+			if (resultOperation != 'Infinity') {
+				console.log(resultOperation);
+				result.innerHTML = resultOperation;
 
-				loadApp(num1.value, num2.value, resultado, div);
+				loadApp(numUno.value, numDos.value, resultOperation, div);
 				clear();
-				deleteOp();
 
 			} else {
 				warning.innerHTML = 'No se puede dividir por 0';
-				container_warning.style.display = 'block';
+				containerWarning.style.display = 'block';
 				setTimeout(function() {
-					container_warning.style.display = 'none';
+					containerWarning.style.display = 'none';
 				}, 2000);
-				num1.value = '';
-				num2.value = '';
+				numUno.value = '';
+				numDos.value = '';
 			}
 
 		}

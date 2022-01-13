@@ -1,17 +1,17 @@
 class Operation {
-    constructor(num1, num2, result, operation) {
-        this._num1 = num1;
-        this._num2 = num2;
+    constructor(numUno, numDos, result, operation) {
+        this._numUno = numUno;
+        this._numDos = numDos;
         this._result = result;
         this._operation = operation;
     }
 
-    get num1() {
-        return this._num1;
+    get numUno() {
+        return this._numUno;
     }
 
-    get num2() {
-        return this._num2;
+    get numDos() {
+        return this._numDos;
     }
 
     get result() {
@@ -23,6 +23,6 @@ class Operation {
     }
 
     get todo() {
-        return `operacion ${this._num1}, ${this._num2} = ${this._result}`;
+        return `operacion ${this._numUno}, ${this._numDos} = ${this._result}`;
     }
 }
